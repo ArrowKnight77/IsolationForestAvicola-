@@ -30,7 +30,7 @@ print(f" Features: {df_scaled.columns.tolist()}")
 # -------------------------
 model = IsolationForest(
     n_estimators=100,       #Crea 100 arboles para buscar datos aislados 
-    contamination=0.01,     #umbral de datos anomalos 1%
+    contamination=0.005,     #umbral de datos anomalos 1%
     max_samples='auto',     
     random_state=42,  #Fija la semilla aleatoria dara los mismos resultados
     n_jobs=-1  #usamos todos los nucleos para mas rapido procesamiento
@@ -83,12 +83,12 @@ df_resultado['anomaly_score'] = df_scaled['anomaly_score'].values
 # 6. Guardar modelo
 # -------------------------
 joblib.dump(model, 'isolation_forest.pkl')
-print("\n Modelo guardado: isolation_forest.pkl")
+print("\n Modelo guardado: isolation_forest2.pkl")
 
 # -------------------------
 # 7. Guardar CSV
 # -------------------------
-df_resultado.to_csv('resultados_anomalias.csv', index=False)
+df_resultado.to_csv('resultados_anomalias2.csv', index=False)
 print(" CSV guardado: resultados_anomalias.csv")
 
 print("\n Muestra de anomalías detectadas:")
